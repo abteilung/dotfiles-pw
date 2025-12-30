@@ -1,0 +1,26 @@
+theme = catppuccin-frappe.conf
+font-family = Hack Nerd Font
+font-size = 13
+font-thicken = true
+adjust-cell-height = 10%
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = true
+macos-titlebar-style = tabs
+macos-option-as-alt = false
+cursor-style = block
+cursor-style-blink = true
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+window-inherit-working-directory = true
+window-inherit-font-size = true
+keybind = cmd+shift+comma=reload_config
+scrollback-limit = 10000
+copy-on-select = clipboard
+clipboard-trim-trailing-spaces = true
+mouse-hide-while-typing = true
+term = xterm-256color
+confirm-close-surface = true
+custom-shader = ~/.config/ghostty/shaders/cursor_blaze.glsl
+custom-shader-animation = always
+font-family-emoji = Apple Color Emoji
