@@ -1,0 +1,35 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
+    
+    // Hauptbereich: nvim oben (70%), untere Panes (30%)
+    pane split_direction="horizontal" {
+        // Oben: nvim (gross)
+        pane size="82%" {
+            command "nvim"
+            args "."
+        }
+        
+        // Unten: 3 Panes nebeneinander
+        pane split_direction="vertical" size="18%" {
+            // Links: Frontend/Dev Server
+            pane size="25%" {
+                name "server"
+            }
+            // Mitte: Zweiter Prozess
+            pane size="25%" {
+                name "tasks"
+            }
+            // Rechts: Claude (halbe Breite)
+            pane size="50%" {
+                command "claude"
+                name "claude"
+            }
+        }
+    }
+    
+    pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+}
