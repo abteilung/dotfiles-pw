@@ -1,0 +1,86 @@
+gui:
+  theme:
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - default
+    selectedLineBgColor:
+      - blue
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
+os:
+  editPreset: "nvim"
+customCommands:
+  # AI Commit mit opencommit (npm install -g opencommit)
+  # Setup: oco config set OCO_AI_PROVIDER=anthropic OCO_API_KEY=$ANTHROPIC_API_KEY OCO_EMOJI=true
+  - key: "<c-a>"
+    description: "AI Commit Message (opencommit)"
+    context: "files"
+    loadingText: "Generating commit message..."
+    command: "oco"
+    output: terminal
+  # Manuelles Gitmoji Commit
+  - key: "E"
+    command: "git commit -m '{{ .Form.emoji }} {{ .Form.message }}'"
+    context: "files"
+    description: "Commit with gitmoji"
+    prompts:
+      - type: "menu"
+        title: "Select gitmoji:"
+        key: "emoji"
+        options:
+          - value: "✨"
+            name: "✨ feat"
+            description: "Introduce new features"
+          - value: "\U0001F41B"
+            name: "\U0001F41B fix"
+            description: "Fix a bug"
+          - value: "⚡️"
+            name: "⚡️ perf"
+            description: "Improve performance"
+          - value: "♻️"
+            name: "♻️ refactor"
+            description: "Refactor code"
+          - value: "\U0001F4DD"
+            name: "\U0001F4DD docs"
+            description: "Add or update documentation"
+          - value: "\U0001F3A8"
+            name: "\U0001F3A8 style"
+            description: "Improve structure/format of code"
+          - value: "✅"
+            name: "✅ test"
+            description: "Add or update tests"
+          - value: "\U0001F527"
+            name: "\U0001F527 config"
+            description: "Add or update configuration files"
+          - value: "\U0001F69A"
+            name: "\U0001F69A move"
+            description: "Move or rename resources"
+          - value: "\U0001F525"
+            name: "\U0001F525 remove"
+            description: "Remove code or files"
+          - value: "\U0001F484"
+            name: "\U0001F484 ui"
+            description: "Add or update UI and style files"
+          - value: "\U0001F680"
+            name: "\U0001F680 deploy"
+            description: "Deploy stuff"
+          - value: "\U0001F512️"
+            name: "\U0001F512️ security"
+            description: "Fix security issues"
+          - value: "⬆️"
+            name: "⬆️ deps"
+            description: "Upgrade dependencies"
+          - value: "\U0001FA79"
+            name: "\U0001FA79 patch"
+            description: "Simple fix for non-critical issue"
+          - value: "\U0001F6A7"
+            name: "\U0001F6A7 wip"
+            description: "Work in progress"
+      - type: "input"
+        title: "Commit message:"
+        key: "message"
+        initialValue: ""
